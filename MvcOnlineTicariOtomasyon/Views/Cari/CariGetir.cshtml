@@ -1,0 +1,44 @@
+﻿@model MvcOnlineTicariOtomasyon.Models.Sinfilar.Cari
+
+@{
+    ViewData["Title"] = "CariGetir";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container mt-4">
+    <div class="card shadow-lg">
+        <div class="card-header bg-primary text-white text-center">
+            <h3 class="mb-0">Cari Güncelleme</h3>
+        </div>
+        <div class="card-body">
+            @using (Html.BeginForm("CariGuncelle", "Cari", FormMethod.Post))
+            {
+                @Html.HiddenFor(x => x.CariId)
+
+                <div class="mb-3">
+                    @Html.LabelFor(x => x.CariAd, new { @class = "form-label fw-bold" })
+                    @Html.TextBoxFor(x => x.CariAd, new { @class = "form-control", placeholder = "Adınızı girin" })
+                    @Html.ValidationMessageFor(x => x.CariAd, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="mb-3">
+                    @Html.LabelFor(x => x.CariSoyad, new { @class = "form-label fw-bold" })
+                    @Html.TextBoxFor(x => x.CariSoyad, new { @class = "form-control", placeholder = "Soyadınızı girin" })
+                    @Html.ValidationMessageFor(x => x.CariSoyad, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="mb-3">
+                    @Html.LabelFor(x => x.CariSehir, new { @class = "form-label fw-bold" })
+                    @Html.TextBoxFor(x => x.CariSehir, new { @class = "form-control", placeholder = "Şehir girin" })
+                </div>
+
+                <div class="mb-3">
+                    @Html.LabelFor(x => x.CariMail, new { @class = "form-label fw-bold" })
+                    @Html.TextBoxFor(x => x.CariMail, new { @class = "form-control", placeholder = "E-posta adresinizi girin" })
+                </div>
+
+                <button type="submit" class="btn btn-success w-100">Güncelle</button>
+            }
+        </div>
+    </div>
+</div>

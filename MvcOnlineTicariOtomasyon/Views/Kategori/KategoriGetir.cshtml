@@ -1,0 +1,37 @@
+﻿@model MvcOnlineTicariOtomasyon.Models.Sinfilar.Kategori
+
+@{
+    ViewData["Title"] = "Kategori Güncelle";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container mt-4">
+    <div class="card shadow-lg border-0">
+        <div class="card-header bg-warning text-dark text-center">
+            <h3><i class="fas fa-edit"></i> Kategori Güncelle</h3>
+        </div>
+        <div class="card-body">
+            @using (Html.BeginForm("KategoriGuncelle", "Kategori", FormMethod.Post))
+            {
+                @Html.HiddenFor(x => x.KategoriID)
+
+                <div class="form-group mb-3">
+                    @Html.LabelFor(x => x.KategoriAd, new { @class = "form-label fw-bold" })
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="fas fa-tag"></i></span>
+                        @Html.TextBoxFor(x => x.KategoriAd, new { @class = "form-control", placeholder = "Kategori adını girin" })
+                    </div>
+                </div>
+
+                <div class="text-center mt-3">
+                    <button type="submit" class="btn btn-info px-4 py-2">
+                        <i class="fas fa-sync-alt"></i> Kategori Güncelle
+                    </button>
+                    <a href="/Kategori" class="btn btn-danger px-4 py-2 ms-2">
+                        <i class="fas fa-arrow-left"></i> Vazgeç
+                    </a>
+                </div>
+            }
+        </div>
+    </div>
+</div>

@@ -1,0 +1,27 @@
+﻿@model MvcOnlineTicariOtomasyon.Models.Sinfilar.FaturaKalem
+
+@{
+    ViewData["Title"] = "FaturaKalemGetir";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Fatura Güncelleme</h1>
+<br />
+
+@using (Html.BeginForm("FaturaKalemGuncelle", "Fatura", FormMethod.Post))
+{
+    @Html.HiddenFor(x => x.FaturaKalemID)
+    @Html.LabelFor(x => x.FaturaKalemAciklama)
+    @Html.TextBoxFor(x => x.FaturaKalemAciklama, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.FaturaKalemMiktar)
+    @Html.TextBoxFor(x => x.FaturaKalemMiktar, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.FaturaKalemBirimFiyat)
+    @Html.TextBoxFor(x => x.FaturaKalemBirimFiyat, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.FaturaKalemTutar)
+    @Html.TextBoxFor(x => x.FaturaKalemTutar, new { @class = "form-control" })
+    <br />
+    <button class="btn btn-success">Fatura Kalemini Güncelle</button>
+}

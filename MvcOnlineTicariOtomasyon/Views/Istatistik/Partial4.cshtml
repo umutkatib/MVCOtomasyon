@@ -1,0 +1,41 @@
+﻿@model IEnumerable<MvcOnlineTicariOtomasyon.Models.Sinfilar.Urun>
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Ürünler</h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body table-responsive p-0">
+                <table id="tbl1" class="table table-hover text-nowrap">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Ürün Adı</th>
+                            <th>Marka</th>
+                            <th>Stok</th>
+                            <th>Alış Fiyatı</th>
+                            <th>Satış Fiyatı</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach(var item in Model)
+                        {
+                            <tr>
+                                <td>@item.UrunID</td>
+                                <td>@item.UrunAd</td>
+                                <td>@item.UrunMarka</td>
+                                <td>@item.UrunStok</td>
+                                <td>@item.UrunAlisFiyat₺</td>
+                                <td>@item.UrunSatisFiyat₺</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+    </div>
+</div>

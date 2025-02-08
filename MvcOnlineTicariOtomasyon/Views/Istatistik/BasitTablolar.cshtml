@@ -1,0 +1,71 @@
+﻿@model Tuple<IEnumerable<MvcOnlineTicariOtomasyon.Models.Sinfilar.SinifGrup>,
+              IEnumerable<MvcOnlineTicariOtomasyon.Models.Sinfilar.SinifGrup2>,
+                  IEnumerable<MvcOnlineTicariOtomasyon.Models.Sinfilar.Cari>,
+                      IEnumerable<MvcOnlineTicariOtomasyon.Models.Sinfilar.Urun>,
+                          IEnumerable<MvcOnlineTicariOtomasyon.Models.Sinfilar.Kategori>,
+                              IEnumerable<MvcOnlineTicariOtomasyon.Models.Sinfilar.SinifGrup3>
+>
+
+@{
+    ViewData["Title"] = "BasitTablolar";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Hızlı Bakış Tabloları</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="~/AdminLTE-3.0.4/plugins/fontawesome-free/css/all.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="~/AdminLTE-3.0.4/dist/css/adminlte.min.css">
+    <!-- Google Font: Source Sans Pro -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+</head>
+<body class="hold-transition sidebar-mini">
+    <div class="wrapper mt-3">
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content">
+            <!-- Main content -->
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-6">
+                        @await Html.PartialAsync("Partial5", Model.Item5)
+
+                            <!-- /.card -->
+
+                            @await Html.PartialAsync("Partial1", Model.Item2)
+                            
+                            <!-- /.card -->
+                        </div>
+                        <!-- /.col -->
+                        <div class="col-md-6">
+                            @await Html.PartialAsync("Partial2", Model.Item1)
+
+                        @await Html.PartialAsync("Partial6", Model.Item6)
+
+                            <!-- /.card -->
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                    <!-- /.row -->
+                @await Html.PartialAsync("Partial4", Model.Item4)
+
+                    
+                    <!-- /.row -->
+                @await Html.PartialAsync("Partial3", Model.Item3)
+
+                    <!-- /.row -->
+                </div><!-- /.container-fluid -->
+            <!-- /.content -->
+        </div>
+    </div>
+</body>
+</html>
+

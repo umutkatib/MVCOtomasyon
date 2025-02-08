@@ -1,0 +1,40 @@
+﻿@model List<MvcOnlineTicariOtomasyon.Models.Sinfilar.FaturaKalem>
+
+@{
+    ViewData["Title"] = "FaturaDetay";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+
+    int faturaId = ViewBag.FaturaId;
+}
+
+<h1>Fatura Kalemleri</h1>
+<br />
+
+<table class="table table-hover">
+    <tr>
+        <th>ID</th>
+        <th>Açıklama</th>
+        <th>Miktar</th>
+        <th>Birim Fiyat</th>
+        <th>Tutar</th>
+        <th>Güncelle</th>
+        <th>Sil</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.FaturaKalemID</td>
+            <td>@item.FaturaKalemAciklama</td>
+            <td>@item.FaturaKalemMiktar</td>
+            <td>@item.FaturaKalemBirimFiyat</td>
+            <td>@item.FaturaKalemTutar</td>
+            <td><a href="/Fatura/FaturaKalemGetir/@item.FaturaKalemID" class="btn btn-warning">Güncelle</a></td>
+            <td><a href="/Fatura/FaturaKalemSil/@item.FaturaKalemID" class="btn btn-outline-success">Sil</a></td>
+        </tr>
+    }
+</table>
+
+<div class="d-flex justify-content-between">
+    <a href="/Fatura/YeniKalem/@faturaId" class="btn btn-outline-primary">Yeni Kalem Girişi</a>
+    <a href="/Fatura" class="btn btn-secondary">Faturalara Dön</a>
+</div>

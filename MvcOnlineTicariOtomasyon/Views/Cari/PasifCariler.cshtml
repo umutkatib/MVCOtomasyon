@@ -1,0 +1,87 @@
+﻿@model List<MvcOnlineTicariOtomasyon.Models.Sinfilar.Cari>
+
+@{
+    ViewData["Title"] = "PasifCariler";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="d-flex justify-content-between align-items-center mt-3 mb-5">
+    <h3 class="text-danger">Pasif Cariler Listesi</h3>
+    <a href="/Cari" class="btn btn-outline-primary">Aktif Cari Kayıtları <i class="fas fa-angle-double-up"></i></a>
+</div>
+
+<table id="tbl1" class="table table-striped table-bordered text-center">
+    <thead class="thead-dark">
+        <tr>
+            <th>Cari ID</th>
+            <th>Ad</th>
+            <th>Soyad</th>
+            <th>Şehir</th>
+            <th>Mail</th>
+            <th>Aktif Yap</th>
+            <th>Detaylar</th>
+            <th>Durum</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.CariId</td>
+                <td>@item.CariAd</td>
+                <td>@item.CariSoyad</td>
+                <td>@item.CariSehir</td>
+                <td>@item.CariMail</td>
+                <td>
+                    <a href="/Cari/CariAktifYap/@item.CariId" class="btn btn-success btn-sm">
+                        <i class="fas fa-check-circle"></i> Aktif Yap
+                    </a>
+                </td>
+                <td>
+                    <a href="/Cari/CariSatisGecmis/@item.CariId" class="btn btn-secondary btn-sm">
+                        <i class="fas fa-info-circle"></i> Satış Geçmişi
+                    </a>
+                </td>
+                <td class="bg-danger text-white font-weight-bold">INACTIVE</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<style>
+    body {
+        background-color: #f9f9f9;
+    }
+
+    .table {
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+        .table th, .table td {
+            vertical-align: middle;
+        }
+
+    .thead-dark th {
+        background-color: #343a40;
+        color: #fff;
+    }
+
+    h3.text-danger {
+        font-size: 1.5rem;
+        font-weight: bold;
+    }
+
+    .btn {
+        border-radius: 20px;
+    }
+
+    .bg-danger {
+        background-color: #dc3545 !important;
+    }
+
+        .bg-danger.text-white {
+            color: #fff !important;
+        }
+</style>

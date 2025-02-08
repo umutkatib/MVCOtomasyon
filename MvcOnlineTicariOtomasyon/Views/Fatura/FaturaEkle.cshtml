@@ -1,0 +1,35 @@
+﻿@model MvcOnlineTicariOtomasyon.Models.Sinfilar.Fatura
+
+@{
+    ViewData["Title"] = "FaturaEkle";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<br />
+<h1>Yeni Fatura Ekle</h1>
+<br />
+
+<form class="form-group" method="post">
+    @Html.LabelFor(x => x.FaturaSeriNo)
+    @Html.TextBoxFor(x => x.FaturaSeriNo, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.FaturaSiraNo)
+    @Html.TextBoxFor(x => x.FaturaSiraNo, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.FaturaTarih)
+    @Html.TextBoxFor(x => x.FaturaTarih, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.FaturaSaat)
+    @Html.TextBoxFor(x => x.FaturaSaat, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.FaturaVergiDairesi)
+    @Html.TextBoxFor(x => x.FaturaVergiDairesi, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.FaturaTeslimEden)
+    @Html.TextBoxFor(x => x.FaturaTeslimEden, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.FaturaTeslimAlan)
+    @Html.TextBoxFor(x => x.FaturaTeslimAlan, new { @class = "form-control" })
+    <br />
+    <button class="btn btn-success">Ekle</button>
+</form>

@@ -1,0 +1,58 @@
+﻿@model List<MvcOnlineTicariOtomasyon.Models.Sinfilar.Urun>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="d-flex justify-content-between mt-3 mb-4">
+    <h3 class="text-primary">Ürün Listesi</h3>
+    <a href="/Urun/UrunEkle" class="btn btn-success">
+        <i class="fas fa-plus"></i> Yeni Ürün Ekle
+    </a>
+</div>
+
+<div class="table-responsive">
+    <table id="tbl1" class="table table-striped table-hover table-bordered text-center align-middle">
+        <thead class="bg-dark text-white">
+            <tr>
+                <th>ID</th>
+                <th>Ürün</th>
+                <th>Marka</th>
+                <th>Stok</th>
+                <th>Alış Fiyatı</th>
+                <th>Satış Fiyatı</th>
+                <th>Kategori</th>
+                <th>Görsel</th>
+                <th>Güncelle</th>
+                <th>Sil</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.UrunID</td>
+                    <td>@item.UrunAd</td>
+                    <td>@item.UrunMarka</td>
+                    <td>@item.UrunStok</td>
+                    <td>@item.UrunAlisFiyat ₺</td>
+                    <td>@item.UrunSatisFiyat ₺</td>
+                    <td>@item.Kategori.KategoriAd</td>
+                    <td>
+                        <img src="@item.UrunGorsel" class="rounded-circle border shadow" style="width:50px; height:50px;">
+                    </td>
+                    <td>
+                        <a href="/Urun/UrunGetir/@item.UrunID" class="btn btn-warning">
+                            <i class="fas fa-edit"></i>
+                        </a>
+                    </td>
+                    <td>
+                        <button class="btn btn-danger">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

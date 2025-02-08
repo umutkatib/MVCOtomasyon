@@ -1,0 +1,27 @@
+﻿@model IEnumerable<MvcOnlineTicariOtomasyon.Models.Sinfilar.Kategori>
+
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">Kategori Tablosu</h3>
+        </div>
+        <!-- /.card-header -->
+        <div class="card-body">
+            <table id="tbl1" class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th style="width: 10px">#</th>
+                        <th>Kategori</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.KategoriID</td>
+                            <td>@item.KategoriAd</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>

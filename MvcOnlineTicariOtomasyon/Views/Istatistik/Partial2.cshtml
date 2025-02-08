@@ -1,0 +1,35 @@
+﻿@model IEnumerable<MvcOnlineTicariOtomasyon.Models.Sinfilar.SinifGrup>
+
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">Müşteri Şehir Tablosu</h3>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body p-0">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th style="width: 10px">#</th>
+                    <th>Şehir</th>
+                    <th style="width: 40px">Adet</th>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    int siraNo = 0;
+                }
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@{
+                                siraNo++;
+                            } @siraNo</td>
+                        <td>@item.Sehir</td>
+                        <td><span class="badge bg-danger">@item.Sayi</span></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <!-- /.card-body -->
+</div>

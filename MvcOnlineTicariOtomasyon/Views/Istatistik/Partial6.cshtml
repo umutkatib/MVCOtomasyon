@@ -1,0 +1,31 @@
+﻿@model IEnumerable<MvcOnlineTicariOtomasyon.Models.Sinfilar.SinifGrup3>
+
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">Striped Full Width Table</h3>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body p-0">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th style="width: 10px">#</th>
+                    <th>Marka</th>
+                    <th style="width: 40px">Toplam</th>
+                </tr>
+            </thead>
+            <tbody>
+                @{int siraNo = 0;}
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@{siraNo++;} @siraNo</td>
+                        <td>@item.Marka</td>
+                        <td><span class="badge bg-danger">@item.Sayi</span></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <!-- /.card-body -->
+</div>

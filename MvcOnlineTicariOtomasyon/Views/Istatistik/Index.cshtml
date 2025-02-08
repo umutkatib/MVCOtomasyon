@@ -1,0 +1,111 @@
+﻿@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="Metro Panel Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
+Smartphone Compatible web template, free web designs for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+
+    <link href="~/web2/css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <link rel="stylesheet" href="~/web2/css/font-awesome.css">
+    <link href="~/web2/css/nav.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="css/jqvmap.css" media="screen" rel="stylesheet" type="text/css" />
+
+    <script src="~/web2/js/jquery.min.js"></script>
+    <script src="~/web2/js/easyResponsiveTabs.js" type="text/javascript"></script>
+    <script src="~/web2/js/main.js"></script>
+    <script src="~/web2/js/Chart1.js"></script>
+
+    <style>
+        body {
+            font-family: 'Open Sans', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+
+        .total-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin: 20px;
+            gap: 20px;
+        }
+
+        .list_of_members {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            width: 100%;
+        }
+
+        .card {
+            flex: 1;
+            min-width: 250px;
+            padding: 20px;
+            border-radius: 10px;
+            color: #fff;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+            .card:hover {
+                transform: scale(1.05);
+                box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            }
+
+        .icon-text h3 {
+            font-size: 2rem;
+            margin: 0;
+        }
+
+        .icon-text p {
+            font-size: 1rem;
+            margin: 5px 0 0;
+        }
+
+        .clearfix {
+            clear: both;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="total-content">
+        @foreach (var card in new[] {
+        new { BgColor = "#1abc9c", Value = ViewBag.d1, Label = "Toplam Cari" },
+        new { BgColor = "#2ecc71", Value = ViewBag.d2, Label = "Ürün Sayısı" },
+        new { BgColor = "#3498db", Value = ViewBag.d3, Label = "Personel Sayısı" },
+        new { BgColor = "#9b59b6", Value = ViewBag.d4, Label = "Kategori Sayısı" },
+        new { BgColor = "#16a085", Value = ViewBag.d5, Label = "Toplam Stok" },
+        new { BgColor = "#27ae60", Value = ViewBag.d6, Label = "Marka Sayısı" },
+        new { BgColor = "#2980b9", Value = ViewBag.d7, Label = "Kritik Seviye" },
+        new { BgColor = "#8e44ad", Value = ViewBag.d8, Label = "Max Fiyatlı Ürün" },
+        new { BgColor = "#f1c40f", Value = ViewBag.d9, Label = "Min Fiyatlı Ürün" },
+        new { BgColor = "#e67e22", Value = ViewBag.d12, Label = "Max Marka" },
+        new { BgColor = "#e74c3c", Value = ViewBag.d10, Label = "Buzdolabı Sayısı" },
+        new { BgColor = "#95a5a6", Value = ViewBag.d11, Label = "Laptop Sayısı" },
+        new { BgColor = "#f39c12", Value = ViewBag.d13, Label = "En Çok Satan" },
+        new { BgColor = "#d35400", Value = ViewBag.d14, Label = "Kasadaki Tutar" },
+        new { BgColor = "#c0392b", Value = ViewBag.d15, Label = "Bugünkü Satışlar" },
+        new { BgColor = "#7f8c8d", Value = ViewBag.d16, Label = "Bugünkü Kasa" }
+        })
+        {
+            <div class="card" style="background-color:@card.BgColor">
+                <div class="icon-text">
+                    <h3>@card.Value</h3>
+                    <p>@card.Label</p>
+                </div>
+            </div>
+        }
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,207 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Core Ticari Otomasyon - Admin</title>
+    <link href="~/Web/dist/css/styles.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+        <a class="navbar-brand" href="/Kategori">Ticari Otomasyon</a><button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#">
+            <i class="fas fa-bars"></i>
+        </button><!-- Navbar Search-->
+        <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
+            <div class="input-group">
+                <input class="form-control" type="text" placeholder="Aranacak..." aria-label="Ara" aria-describedby="basic-addon2" />
+                <div class="input-group-append">
+                    <button class="btn btn-primary" type="button"><i class="fas fa-search"></i></button>
+                </div>
+            </div>
+        </form>
+        <!-- Navbar-->
+        <ul class="navbar-nav ml-auto ml-md-0">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+                    <a class="dropdown-item" href="#">Ayarlar</a><a class="dropdown-item" href="#">Hesabım</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="login.html">Çıkış Yap</a>
+                </div>
+            </li>
+        </ul>
+    </nav>
+    <div id="layoutSidenav">
+        <div id="layoutSidenav_nav">
+            <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+                <div class="sb-sidenav-menu">
+                    <div class="nav">
+                        <div class="sb-sidenav-menu-heading">Temel İşlemler</div>
+                        <a class="nav-link" href="/Kategori/">
+                            <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                            Kategoriler
+                        </a>
+                        <a class="nav-link" href="/Urun/">
+                            <div class="sb-nav-link-icon"><i class="fas fa-flask"></i></div>
+                            Ürünler
+                        </a>
+                        <a class="nav-link" href="/Departman/">
+                            <div class="sb-nav-link-icon"><i class="fas fa-bars"></i></div>
+                            Departmanlar
+                        </a>
+                        <a class="nav-link" href="/Cari/">
+                            <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
+                            Cariler
+                        </a>
+
+                        <!-- İlk Menü: Personel -->
+                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePersonel" aria-expanded="false" aria-controls="collapsePersonel">
+                            <div class="sb-nav-link-icon"><i class="fas fa-street-view"></i></div>
+                            Personel
+                            <div class="sb-sidenav-collapse-arrow">
+                                <i class="fas fa-angle-down"></i>
+                            </div>
+                        </a>
+                        <div class="collapse" id="collapsePersonel" aria-labelledby="headingPersonel">
+                            <nav class="sb-sidenav-menu-nested nav">
+                                <a class="nav-link" href="/Personel">Personel Listesi</a>
+                                <a class="nav-link" href="/Personel/PersonelListe">Personel Detayları</a>
+                            </nav>
+                        </div>
+
+                        <!-- İkinci Menü: Admin -->
+                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseAdmin" aria-expanded="false" aria-controls="collapseAdmin">
+                            <div class="sb-nav-link-icon"><i class="fas fa-lock"></i></div>
+                            Admin
+                            <div class="sb-sidenav-collapse-arrow">
+                                <i class="fas fa-angle-down"></i>
+                            </div>
+                        </a>
+                        <div class="collapse" id="collapseAdmin" aria-labelledby="headingAdmin">
+                            <nav class="sb-sidenav-menu-nested nav">
+                                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
+                                    Yetkilendirme
+                                    <div class="sb-sidenav-collapse-arrow">
+                                        <i class="fas fa-angle-down"></i>
+                                    </div>
+                                </a>
+                                <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingAuth">
+                                    <nav class="sb-sidenav-menu-nested nav">
+                                        <a class="nav-link" href="login.html">Giriş Yap</a>
+                                        <a class="nav-link" href="register.html">Kayıt Ol</a>
+                                        <a class="nav-link" href="password.html">Şifremi Unuttum</a>
+                                    </nav>
+                                </div>
+                                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#pagesCollapseError" aria-expanded="false" aria-controls="pagesCollapseError">
+                                    Hata Sayfaları
+                                    <div class="sb-sidenav-collapse-arrow">
+                                        <i class="fas fa-angle-down"></i>
+                                    </div>
+                                </a>
+                                <div class="collapse" id="pagesCollapseError" aria-labelledby="headingError">
+                                    <nav class="sb-sidenav-menu-nested nav">
+                                        <a class="nav-link" href="401.html">401 Page</a>
+                                        <a class="nav-link" href="404.html">404 Page</a>
+                                        <a class="nav-link" href="500.html">500 Page</a>
+                                    </nav>
+                                </div>
+                            </nav>
+                        </div>
+
+
+                        <div class="sb-sidenav-menu-heading">Rapor & Fatura</div>
+                        <a class="nav-link" href="/Satis/">
+                            <div class="sb-nav-link-icon"><i class="fas fa-taxi"></i></div>
+                            Satışlar
+                        </a>
+                        <a class="nav-link" href="/Fatura">
+                            <div class="sb-nav-link-icon"><i class="fas fa-calendar"></i></div>
+                            Faturalar
+                        </a>
+                        <a class="nav-link" href="/Urun/UrunListesi">
+                            <div class="sb-nav-link-icon"><i class="fas fa-print"></i></div>
+                            PDF ~ Excel
+                        </a>
+                        <a class="nav-link" href="/Istatistik">
+                            <div class="sb-nav-link-icon"><i class="fas fa-chart-bar"></i></div>
+                            İstatistikler
+                        </a>
+                        <a class="nav-link" href="/Istatistik/BasitTablolar">
+                            <div class="sb-nav-link-icon"><i class="fas fa-car"></i></div>
+                            Hızlı Bakış
+                        </a>
+                        <a class="nav-link" href="/Galeri">
+                            <div class="sb-nav-link-icon"><i class="fas fa-camera-retro"></i></div>
+                            Galeri
+                        </a>
+                        <a class="nav-link" href="/UrunDetay">
+                            <div class="sb-nav-link-icon"><i class="fas fa-university"></i></div>
+                            Ürün Detayları
+                        </a>
+                    </div>
+                </div>
+                <div class="sb-sidenav-footer">
+                    <div class="small">Logged in as:</div>
+                    Start Bootstrap
+                </div>
+            </nav>
+        </div>
+        <div id="layoutSidenav_content">
+            <main>
+                <div class="container-fluid">
+                    @RenderBody()
+                </div>
+            </main>
+            <footer class="py-4 bg-light mt-auto">
+                <div class="container-fluid">
+                    <div class="d-flex align-items-center justify-content-between small">
+                        <div class="text-muted">Made by <i><b>UmutKatib</b></i> with <i class="fas fa-heart"></i></div>
+                        <div>
+                            <div class="text-muted">Copyright &copy; @DateTime.Now.Year </div>
+                            <a href="#">Privacy Policy & Terms Conditions</a>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    <script src="~/Web/dist/js/scripts.js"></script>
+
+    <!-- CSS -->
+    <link href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet" />
+
+    <!-- JS -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap4.min.js"></script>
+
+
+    <script>
+
+        $('#tbl1').dataTable({
+            language: {
+                url: '//cdn.datatables.net/plug-ins/2.2.1/i18n/tr.json',
+            },
+            lengthMenu: [[5, 10, 25, 50, -1], [5, 10, 25, 50, "Tümü"]] // Kullanıcının seçim yapabileceği seçenekler
+
+        });
+
+    </script>
+
+</body>
+</html>
+
+

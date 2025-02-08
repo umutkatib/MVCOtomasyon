@@ -1,0 +1,46 @@
+﻿@model List<MvcOnlineTicariOtomasyon.Models.Sinfilar.Fatura>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="d-flex justify-content-between mt-3 mb-5">
+    <h3>Fatura Listesi</h3>
+    <a href="/Fatura/FaturaEkle" class="btn btn-success w-25">Yeni Fatura Girişi <i class="fas fa-plus"></i></a>
+</div>
+
+<table id="tbl1" class="table table-bordered">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Seri No</th>
+            <th>Sıra No</th>
+            <th>Vergi Dairesi</th>
+            <th>Tarih</th>
+            <th>Saat</th>
+            <th>Teslim Eden</th>
+            <th>Teslim Alan</th>
+            <th>Toplam</th>
+            <th>Güncelle</th>
+            <th>Detaylar</th>
+        </tr>
+    </thead>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.FaturaID</td>
+            <td>@item.FaturaSeriNo</td>
+            <td>@item.FaturaSiraNo</td>
+            <td>@item.FaturaVergiDairesi</td>
+            <td>@item.FaturaTarih.ToString("dd/MM/yyyy")</td>
+            <td>@item.FaturaSaat</td>
+            <td>@item.FaturaTeslimEden</td>
+            <td>@item.FaturaTeslimAlan</td>
+            <td class="fw-bold text-success">@item.FaturaToplamTutar.ToString("C", new System.Globalization.CultureInfo("tr-TR"))</td>
+            <td><a href="/Fatura/FaturaGetir/@item.FaturaID" class="btn btn-warning">Güncelle</a></td>
+            <td><a href="/Fatura/FaturaDetay/@item.FaturaID" class="btn btn-outline-success">Detaylar</a></td>
+        </tr>
+    }
+</table>

@@ -1,0 +1,32 @@
+﻿@model List<MvcOnlineTicariOtomasyon.Models.Sinfilar.Kategori>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="d-flex justify-content-between mt-3 mb-5">
+    <h3>Kategori Listesi</h3>
+    <a href="/Kategori/KategoriEkle" class="btn btn-success w-25">Yeni Kategori Ekle <i class="fas fa-plus"></i></a>
+</div>
+
+<table id="tbl1" class="table table-bordered text-center align-middle">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Kategori Adı</th>
+            <th>Güncelle</th>
+            <th>Sil</th>
+        </tr>
+    </thead>
+    @foreach(var item in Model)
+    {
+        <tr>
+            <td>@item.KategoriID</td>
+            <td>@item.KategoriAd</td>
+            <td><a href="/Kategori/KategoriGetir/@item.KategoriID" class="btn btn-warning"><i class="fas fa-edit"></i></a></td>
+            <td><a href="/Kategori/KategoriSil/@item.KategoriID" class="btn btn-danger"><i class="fas fa-trash"></i></a></td>
+        </tr>
+    }
+</table>

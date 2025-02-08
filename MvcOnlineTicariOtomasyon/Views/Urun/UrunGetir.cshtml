@@ -1,0 +1,65 @@
+﻿@model MvcOnlineTicariOtomasyon.Models.Sinfilar.Urun
+
+@{
+    ViewData["Title"] = "UrunGetir";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="card shadow-lg p-4 mt-4">
+    <h3 class="text-primary text-center">Ürün Güncelleme</h3>
+    <hr>
+
+    @using (Html.BeginForm("UrunGuncelle", "Urun", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.HiddenFor(x => x.UrunID)
+
+        <div class="mb-3">
+            @Html.LabelFor(x => x.UrunAd, new { @class = "form-label fw-bold" })
+            @Html.TextBoxFor(x => x.UrunAd, new { @class = "form-control", placeholder = "Ürün Adını Giriniz" })
+        </div>
+
+        <div class="mb-3">
+            @Html.LabelFor(x => x.UrunMarka, new { @class = "form-label fw-bold" })
+            @Html.TextBoxFor(x => x.UrunMarka, new { @class = "form-control", placeholder = "Ürün Markasını Giriniz" })
+        </div>
+
+        <div class="mb-3">
+            @Html.LabelFor(x => x.UrunStok, new { @class = "form-label fw-bold" })
+            @Html.TextBoxFor(x => x.UrunStok, new { @class = "form-control", placeholder = "Stok Miktarını Giriniz" })
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                @Html.LabelFor(x => x.UrunAlisFiyat, new { @class = "form-label fw-bold" })
+                @Html.TextBoxFor(x => x.UrunAlisFiyat, new { @class = "form-control", placeholder = "Alış Fiyatı" })
+            </div>
+            <div class="col-md-6 mb-3">
+                @Html.LabelFor(x => x.UrunSatisFiyat, new { @class = "form-label fw-bold" })
+                @Html.TextBoxFor(x => x.UrunSatisFiyat, new { @class = "form-control", placeholder = "Satış Fiyatı" })
+            </div>
+        </div>
+
+        <div class="mb-3">
+            @Html.LabelFor(x => x.Kategori, new { @class = "form-label fw-bold" })
+            @Html.DropDownListFor(x => x.KategoriID, (List<SelectListItem>)ViewBag.uguncelle, new
+                {
+                    @class = "form-select custom-dropdown p-1"
+                })
+        </div>
+
+        <div class="mb-3">
+            @Html.LabelFor(x => x.UrunGorsel, new { @class = "form-label fw-bold" })
+            @Html.TextBoxFor(x => x.UrunGorsel, new { @class = "form-control" })
+        </div>
+
+
+        <div class="text-center">
+            <button type="submit" class="btn btn-success">
+                <i class="fas fa-save"></i> Ürün Güncelle
+            </button>
+        </div>
+    }
+</div>
+
+<!-- FontAwesome Kütüphanesi İçin -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">

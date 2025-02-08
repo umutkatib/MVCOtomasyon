@@ -1,0 +1,37 @@
+﻿@model List<MvcOnlineTicariOtomasyon.Models.Sinfilar.SatisHareket>
+
+@{
+    ViewData["Title"] = "SatisDetay";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Satış Detayları</h1>
+<br />
+
+<table class="table table-condensed">
+    <tr>
+        <th>Satış ID</th>
+        <th>Ürün</th>
+        <th>Cari</th>
+        <th>Personel</th>
+        <th>Fiyat</th>
+        <th>Adet</th>
+        <th>Toplam</th>
+        <th>Tarih</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.SatisHareketID</td>
+            <td>@item.Urun.UrunAd</td>
+            <td>@item.Cari.CariAd @item.Cari.CariSoyad</td>
+            <td>@item.Personel.PersonelAd @item.Personel.PersonelSoyad</td>
+            <td>@item.SatisHareketFiyat</td>
+            <td>@item.SatisHareketAdet</td>
+            <td>@item.SatisHareketToplamTutar</td>
+            <td>@item.SatisHareketTarih</td>
+        </tr>
+    }
+</table>
+
+<a href="#" class="btn btn-outline-success w-100">Yazdır</a>
