@@ -5,9 +5,6 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-
-
-
 <div class="d-flex justify-content-between mt-3 mb-5">
     <h3>Satış Hareket Listesi</h3>
     <a href="/Satis/SatisYap" class="btn btn-success w-25">Yeni Satış Yap <i class="fas fa-angle-double-up"></i></a>
@@ -16,7 +13,6 @@
 <table id="tbl1" class="table table-striped">
     <thead>
         <tr>
-            <th>ID</th>
             <th>Ürün</th>
             <th>Cari</th>
             <th>Personel</th>
@@ -31,7 +27,6 @@
     @foreach (var item in Model)
     {
         <tr>
-            <td>@item.SatisHareketID</td>
             <td>@item.Urun.UrunAd</td>
             <td>@item.Cari.CariAd @item.Cari.CariSoyad</td>
             <td>@item.Personel.PersonelAd @item.Personel.PersonelSoyad</td>

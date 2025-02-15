@@ -18,10 +18,15 @@ namespace MvcOnlineTicariOtomasyon.Controllers
         }
 
         [HttpGet]
-        public IActionResult Index()
+        public IActionResult Index(string p)
         {
-            var urunler = _context.Uruns.Include(x => x.Kategori).Where(x => x.UrunDurum == true).ToList();
-            return View(urunler);
+            var urunler = _context.Uruns.Include(x => x.Kategori).Where(x => x.UrunDurum == true);
+            //var urunler = (from x in _context.Uruns where x.UrunDurum == true select x).Include(x => x.Kategori);
+            if (!string.IsNullOrEmpty(p))
+            {
+                urunler = urunler.Where(x => x.UrunAd.Contains(p));
+            }
+            return View(urunler.ToList());
         }
 
         [HttpGet]

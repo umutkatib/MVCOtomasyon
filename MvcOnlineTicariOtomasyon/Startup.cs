@@ -1,5 +1,7 @@
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -27,6 +29,23 @@ namespace MvcOnlineTicariOtomasyon
 		{
 			services.AddDbContext<Context>(options =>
 			options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+					.AddCookie(options =>
+					{
+						options.LoginPath = new PathString("/Login/Index");
+						options.AccessDeniedPath = new PathString("/Login/Index");
+						options.ExpireTimeSpan = TimeSpan.FromMinutes(5);
+					});
+			services.AddAuthorization();
+
+			services.AddSession(options =>
+			{
+				options.IdleTimeout = TimeSpan.FromMinutes(5); // Oturum süresi
+				options.Cookie.HttpOnly = true;
+				options.Cookie.IsEssential = true;
+			});
+
 			services.AddControllersWithViews();
 		}
 
@@ -48,7 +67,10 @@ namespace MvcOnlineTicariOtomasyon
 
 			app.UseRouting();
 
+			app.UseAuthentication();
 			app.UseAuthorization();
+
+			app.UseSession();
 
 			app.UseEndpoints(endpoints =>
 			{

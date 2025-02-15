@@ -14,9 +14,7 @@
 <table id="tbl1" class="table table-bordered">
     <thead>
         <tr>
-            <th>ID</th>
-            <th>Seri No</th>
-            <th>Sıra No</th>
+            <th>Seri Sıra No</th>
             <th>Vergi Dairesi</th>
             <th>Tarih</th>
             <th>Saat</th>
@@ -30,9 +28,7 @@
     @foreach (var item in Model)
     {
         <tr>
-            <td>@item.FaturaID</td>
-            <td>@item.FaturaSeriNo</td>
-            <td>@item.FaturaSiraNo</td>
+            <td>@item.FaturaSeriNo @item.FaturaSiraNo</td>
             <td>@item.FaturaVergiDairesi</td>
             <td>@item.FaturaTarih.ToString("dd/MM/yyyy")</td>
             <td>@item.FaturaSaat</td>

@@ -17,7 +17,9 @@ namespace MvcOnlineTicariOtomasyon.Models.Sinfilar
 		public string CariSehir { get; set; }
 		[Column(TypeName = "Varchar"), StringLength(50), DisplayName("Mail")]
 		public string CariMail { get; set; }
-        public bool CariDurum { get; set; }
+		[Column(TypeName = "Varchar"), StringLength(50), DisplayName("Şifre")]
+		public string CariSifre { get; set; }
+		public bool CariDurum { get; set; }
 
         public ICollection<SatisHareket> SatisHarekets { get; set; }
 
