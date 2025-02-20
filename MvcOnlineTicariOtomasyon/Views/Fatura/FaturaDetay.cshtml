@@ -18,7 +18,7 @@
         <th>Birim Fiyat</th>
         <th>Tutar</th>
         <th>Güncelle</th>
-        <th>Sil</th>
+        @* <th>Sil</th> *@
     </tr>
     @foreach (var item in Model)
     {
@@ -29,7 +29,7 @@
             <td>@item.FaturaKalemBirimFiyat</td>
             <td>@item.FaturaKalemTutar</td>
             <td><a href="/Fatura/FaturaKalemGetir/@item.FaturaKalemID" class="btn btn-warning">Güncelle</a></td>
-            <td><a href="/Fatura/FaturaKalemSil/@item.FaturaKalemID" class="btn btn-outline-success">Sil</a></td>
+            @* <td><a href="/Fatura/FaturaKalemSil/@item.FaturaKalemID" class="btn btn-outline-success">Sil</a></td> *@
         </tr>
     }
 </table>

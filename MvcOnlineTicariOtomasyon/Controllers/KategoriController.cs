@@ -31,7 +31,8 @@ namespace MvcOnlineTicariOtomasyon.Controllers
         {
             _context.Add(k);
             _context.SaveChanges();
-            return RedirectToAction("Index");
+			TempData["BasariMesaji"] = "Kategori Başarılı Bir Şekilde Eklendi";
+			return RedirectToAction("Index");
         }
 
         public IActionResult KategoriSil(int id)

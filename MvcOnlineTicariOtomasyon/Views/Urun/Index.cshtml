@@ -32,6 +32,7 @@
                 <th>Görsel</th>
                 <th>Güncelle</th>
                 <th>Sil</th>
+                <th>Satış Yap</th>
             </tr>
         </thead>
         <tbody>
@@ -53,9 +54,14 @@
                         </a>
                     </td>
                     <td>
-                        <button class="btn btn-danger">
+                        <a href="/Urun/UrunSil/@item.UrunID" class="btn btn-danger">
                             <i class="fas fa-trash"></i>
-                        </button>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="/Urun/SatisYap/@item.UrunID" class="btn btn-primary btn-xs">
+                            Satış Yap
+                        </a>
                     </td>
                 </tr>
             }

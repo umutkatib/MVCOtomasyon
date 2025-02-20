@@ -5,58 +5,57 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<div class="container mt-4">
-    <div class="card shadow-lg border-0">
-        <div class="card-header bg-success text-white text-center">
-            <h3><i class="fas fa-user-plus"></i> Yeni Personel Ekle</h3>
-        </div>
-        <div class="card-body">
-            <form class="form-group" method="post">
-                <div class="mb-3">
-                    @Html.LabelFor(x => x.PersonelAd, new { @class = "form-label fw-bold" })
-                    @Html.TextBoxFor(x => x.PersonelAd, new { @class = "form-control", placeholder = "Personel adını girin..." })
-                </div>
+    <div class="container mt-4">
+        <div class="card shadow-lg border-0">
+            <div class="card-header bg-success text-white text-center">
+                <h3><i class="fas fa-user-plus"></i> Yeni Personel Ekle</h3>
+            </div>
+            <div class="card-body">
+                <form class="form-group" method="post" enctype="multipart/form-data">
+                    <div class="mb-3">
+                        @Html.LabelFor(x => x.PersonelAd, new { @class = "form-label fw-bold" })
+                        @Html.TextBoxFor(x => x.PersonelAd, new { @class = "form-control", placeholder = "Personel adını girin..." })
+                    </div>
 
-                <div class="mb-3">
-                    @Html.LabelFor(x => x.PersonelSoyad, new { @class = "form-label fw-bold" })
-                    @Html.TextBoxFor(x => x.PersonelSoyad, new { @class = "form-control", placeholder = "Personel soyadını girin..." })
-                </div>
+                    <div class="mb-3">
+                        @Html.LabelFor(x => x.PersonelSoyad, new { @class = "form-label fw-bold" })
+                        @Html.TextBoxFor(x => x.PersonelSoyad, new { @class = "form-control", placeholder = "Personel soyadını girin..." })
+                    </div>
 
-                <div class="mb-3">
-                    @Html.LabelFor(x => x.PersonelHakkinda, new { @class = "form-label fw-bold" })
-                    @Html.TextBoxFor(x => x.PersonelHakkinda, new { @class = "form-control", placeholder = "Personel hakkında girin..." })
-                </div>
+                    <div class="mb-3">
+                        @Html.LabelFor(x => x.PersonelHakkinda, new { @class = "form-label fw-bold" })
+                        @Html.TextBoxFor(x => x.PersonelHakkinda, new { @class = "form-control", placeholder = "Personel hakkında girin..." })
+                    </div>
 
-                <div class="mb-3">
-                    @Html.LabelFor(x => x.PersonelTelefon, new { @class = "form-label fw-bold" })
-                    @Html.TextBoxFor(x => x.PersonelTelefon, new { @class = "form-control", placeholder = "Telefon girin..." })
-                </div>
+                    <div class="mb-3">
+                        @Html.LabelFor(x => x.PersonelTelefon, new { @class = "form-label fw-bold" })
+                        @Html.TextBoxFor(x => x.PersonelTelefon, new { @class = "form-control", placeholder = "Telefon girin..." })
+                    </div>
 
-                <div class="mb-3">
-                    @Html.LabelFor(x => x.PersonelUlke, new { @class = "form-label fw-bold" })
-                    @Html.TextBoxFor(x => x.PersonelUlke, new { @class = "form-control", placeholder = "Ülke girin..." })
-                </div>
+                    <div class="mb-3">
+                        @Html.LabelFor(x => x.PersonelUlke, new { @class = "form-label fw-bold" })
+                        @Html.TextBoxFor(x => x.PersonelUlke, new { @class = "form-control", placeholder = "Ülke girin..." })
+                    </div>
 
-                <div class="mb-3">
-                    @Html.LabelFor(x => x.PersonelAdres, new { @class = "form-label fw-bold" })
-                    @Html.TextBoxFor(x => x.PersonelAdres, new { @class = "form-control", placeholder = "Adres girin..." })
-                </div>
-
-                <div class="mb-3">
-                    @Html.LabelFor(x => x.PersonelGorsel, new { @class = "form-label fw-bold" })
-                    @Html.TextBoxFor(x => x.PersonelGorsel, new { @class = "form-control", placeholder = "Görsel URL'sini girin..." })
-                </div>
+                    <div class="mb-3">
+                        @Html.LabelFor(x => x.PersonelAdres, new { @class = "form-label fw-bold" })
+                        @Html.TextBoxFor(x => x.PersonelAdres, new { @class = "form-control", placeholder = "Adres girin..." })
+                    </div>
 
 
-                <div class="mb-3">
-                    @Html.LabelFor(x => x.Departman, new { @class = "form-label fw-bold p-1" })
-                    @Html.DropDownListFor(x => x.DepartmanID, (List<SelectListItem>)ViewBag.dekle, new { @class = "form-select" })
-                </div>
+                    <div class="mb-3">
+                        <input type="file" name="file"/>
+                    </div>
 
-                <button class="btn btn-success w-100">
-                    <i class="fas fa-plus"></i> Personel Ekle
-                </button>
-            </form>
+                    <div class="mb-3">
+                        @Html.LabelFor(x => x.Departman, new { @class = "form-label fw-bold p-1" })
+                        @Html.DropDownListFor(x => x.DepartmanID, (List<SelectListItem>)ViewBag.dekle, new { @class = "form-select" })
+                    </div>
+
+                    <button class="btn btn-success w-100">
+                        <i class="fas fa-plus"></i> Personel Ekle
+                    </button>
+                </form>
+            </div>
         </div>
     </div>
-</div>

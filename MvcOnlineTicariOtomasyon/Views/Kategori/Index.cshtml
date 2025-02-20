@@ -28,10 +28,32 @@
         <tr>
             <td>@item.KategoriAd</td>
             <td><a href="/Kategori/KategoriGetir/@item.KategoriID" class="btn btn-warning"><i class="fas fa-edit"></i></a></td>
-            <td><a href="/Kategori/KategoriSil/@item.KategoriID" class="btn btn-danger"><i class="fas fa-trash"></i></a></td>
+            <td><a href="/Kategori/KategoriSil/@item.KategoriID" class="btn btn-danger btnSil"><i class="fas fa-trash"></i></a></td>
         </tr>
     }
 </table>
+
+<script>
+    $(document).on("click", ".btnSil", function (e) {
+        e.preventDefault(); 
+        var url = $(this).attr("href"); 
+
+        Swal.fire({
+            title: "Emin misiniz?",
+            text: "Bu işlem geri alınamaz!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Sil",
+            cancelButtonText: "Hayır"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = url;
+            }
+        });
+    });
+</script>
 
 @Html.PagedListPager(
         Model,

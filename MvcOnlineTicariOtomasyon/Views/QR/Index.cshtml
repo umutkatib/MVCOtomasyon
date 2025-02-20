@@ -1,0 +1,26 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<br />
+
+<div class="text-center mt-3">
+    <h3>QR Kod</h3>
+    @if (ViewBag.ErrorMessage != null)
+    {
+        <p>@ViewBag.ErrorMessage</p>
+    }
+    else if (ViewBag.qrCodeImg != null)
+    {
+        <p><b>Kod:</b> @ViewBag.Kod</p>
+        <img src="@ViewBag.qrCodeImg" style="width:300px; height:300px" alt="QR Kod" />
+        <br />
+
+    }
+    else
+    {
+        <p>QR Kod oluşturulamadı.</p>
+    }
+</div>

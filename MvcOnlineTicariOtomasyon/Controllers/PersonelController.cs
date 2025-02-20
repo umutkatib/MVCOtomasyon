@@ -1,20 +1,27 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using MvcOnlineTicariOtomasyon.Models.Sinfilar;
 using MvcOnlineTicariOtomasyon.Models.Sinfilar.Context;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace MvcOnlineTicariOtomasyon.Controllers
 {
     public class PersonelController : Controller
     {
         private Context _context;
+        private readonly IWebHostEnvironment _env;
 
-        public PersonelController(Context context)
+        public PersonelController(Context context, IWebHostEnvironment env)
         {
             _context = context;
+            _env = env;
         }
 
         public IActionResult Index()
@@ -36,8 +43,23 @@ namespace MvcOnlineTicariOtomasyon.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult PersonelEkle(Personel p)
+        public async Task<IActionResult> PersonelEkle(Personel p, IFormFile file)
         {
+            string uploadsFolder = Path.Combine(_env.WebRootPath, "images");
+            if(!Directory.Exists(uploadsFolder))
+            {
+                Directory.CreateDirectory(uploadsFolder);
+            }
+
+            string fileName = Path.GetFileName(file.FileName);
+            string fileSavePath = Path.Combine(uploadsFolder, fileName);
+
+            using (FileStream stream = new FileStream(fileSavePath, FileMode.Create))
+            {
+                await file.CopyToAsync(stream);
+            }
+
+            p.PersonelGorsel = "/images/" + fileName;
             _context.Personels.Add(p);
             _context.SaveChanges();
             return RedirectToAction("Index");

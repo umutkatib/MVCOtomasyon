@@ -1,0 +1,20 @@
+﻿@model MvcOnlineTicariOtomasyon.Models.Sinfilar.KargoTakip
+
+@{
+    ViewData["Title"] = "KargoDetayEkle";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<br />
+<h1>Kargo Detay Ekle</h1>
+<br />
+
+<form class="form-group" method="post">
+    @Html.LabelFor(x => x.KargoTakipAciklama)
+    @Html.TextBoxFor(x => x.KargoTakipAciklama, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.KargoTakipTarih)
+    @Html.TextBoxFor(x => x.KargoTakipTarih, new { @class = "form-control", type = "date" })
+    <br />
+    <button class="btn btn-success">Ekle</button>
+</form>

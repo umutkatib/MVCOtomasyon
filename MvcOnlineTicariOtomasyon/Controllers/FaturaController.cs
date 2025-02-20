@@ -18,11 +18,6 @@ namespace MvcOnlineTicariOtomasyon.Controllers
         public IActionResult Index()
         {
             var faturalar = _context.Faturas.Include(f => f.FaturaKalems).ToList();
-
-            foreach (var fatura in faturalar)
-            {
-                fatura.FaturaToplamTutar = fatura.FaturaKalems.Sum(k => k.FaturaKalemTutar);
-            }
             return View(faturalar);
         }
 
@@ -61,7 +56,7 @@ namespace MvcOnlineTicariOtomasyon.Controllers
 
         public IActionResult FaturaDetay(int id)
         {
-            var fkalemler = _context.FaturaKalems.Where(x => x.FaturaID == id).ToList();
+            var fkalemler = _context.FaturaKalems.Where(x => x.FaturaID == id).Where(x => x.FaturaKalemDurum == true).ToList();
             ViewBag.FaturaId = id;
             return View(fkalemler);
         }
@@ -96,5 +91,13 @@ namespace MvcOnlineTicariOtomasyon.Controllers
             _context.SaveChanges();
             return RedirectToAction("");
         }
+
+        //public IActionResult FaturaKalemSil(int id)
+        //{
+        //    var fkalem = _context.FaturaKalems.Find(id);
+        //    fkalem.FaturaKalemDurum = false;
+        //    _context.SaveChanges();
+        //    return RedirectToAction("Index");
+        //}
     }
 }

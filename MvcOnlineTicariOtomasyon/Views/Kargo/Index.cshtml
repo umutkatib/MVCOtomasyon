@@ -1,0 +1,35 @@
+﻿@model List<MvcOnlineTicariOtomasyon.Models.Sinfilar.KargoDetay>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="d-flex justify-content-between mt-3 mb-5">
+    <h3>Kargolar</h3>
+    <a href="/Kargo/YeniKargo" class="btn btn-success w-25">Yeni Kargo Girişi <i class="fas fa-plus"></i></a>
+</div>
+
+<table id="tbl1" class="table table-bordered text-center align-middle">
+    <thead>
+        <tr>
+            <th>Kod</th>
+            <th>Personel</th>
+            <th>Alıcı</th>
+            <th>Tarih</th>
+            <th>Detay</th>
+            <th>QR</th>
+        </tr>
+    </thead>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.KargoDetayTakipKodu</td>
+            <td>@item.KargoDetayPersonel</td>
+            <td>@item.KargoDetayAlici</td>
+            <td>@item.KargoDetayTarih.ToString("dd/MM/yyyy")</td>
+            <td><a href="/Kargo/KargoTakip/@item.KargoDetayTakipKodu" class="btn btn-outline-success"><i class="fas fa-info-circle"></i></a></td>
+            <td><a href="/Qr/Index/@item.KargoDetayTakipKodu" class="btn btn-outline-primary"><i class="fa-solid fa-qrcode"></i></a></td>
+        </tr>
+    }
+</table>

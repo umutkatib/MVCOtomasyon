@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using MvcOnlineTicariOtomasyon.Models.Sinfilar;
 using MvcOnlineTicariOtomasyon.Models.Sinfilar.Context;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -21,7 +22,6 @@ namespace MvcOnlineTicariOtomasyon.Controllers
         public IActionResult Index(string p)
         {
             var urunler = _context.Uruns.Include(x => x.Kategori).Where(x => x.UrunDurum == true);
-            //var urunler = (from x in _context.Uruns where x.UrunDurum == true select x).Include(x => x.Kategori);
             if (!string.IsNullOrEmpty(p))
             {
                 urunler = urunler.Where(x => x.UrunAd.Contains(p));
@@ -93,6 +93,30 @@ namespace MvcOnlineTicariOtomasyon.Controllers
         {
             var degerler = _context.Uruns.Where(x => x.UrunDurum == true).Include(x => x.Kategori).ToList();
             return View(degerler);
+        }
+
+        [HttpGet]
+        public IActionResult SatisYap(int id)
+        {
+            List<SelectListItem> deger1 = (from x in _context.Personels.ToList()
+                                           select new SelectListItem
+                                           {
+                                               Text = x.PersonelAd + " " + x.PersonelSoyad,
+                                               Value = x.PersonelID.ToString(),
+                                           }).ToList();
+            ViewBag.dgr1 = deger1;
+            var urun = _context.Uruns.Find(id);
+            ViewBag.dgr2 = urun.UrunID;
+            ViewBag.dgr3 = urun.UrunSatisFiyat;
+            return View();
+        }
+        [HttpPost]
+        public IActionResult SatisYap(SatisHareket s)
+        {
+            s.SatisHareketTarih = DateTime.Parse(DateTime.Now.ToShortDateString());
+            _context.SatisHarekets.Add(s);
+            _context.SaveChanges();
+            return RedirectToAction("Index", "Satis");
         }
     }
 }

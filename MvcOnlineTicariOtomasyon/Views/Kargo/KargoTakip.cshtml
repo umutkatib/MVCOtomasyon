@@ -1,0 +1,33 @@
+﻿@model List<MvcOnlineTicariOtomasyon.Models.Sinfilar.KargoTakip>
+
+@{
+    ViewData["Title"] = "KargoTakip";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="d-flex justify-content-between align-items-center mt-3 mb-4">
+    <h3>Kargo Hareketleri</h3>
+    <a href="/Kargo/KargoDetayEkle/@ViewBag.kod" class="btn btn-success w-25">Yeni Hareket Gir <i class="fas fa-plus"></i></a>
+</div>
+<a href="/Kargo">Geri Dön</a>
+
+<div class="table-responsive">
+    <table id="tbl1" class="table table-striped table-hover table-bordered text-center align-middle">
+        <thead class="table-dark">
+            <tr>
+                <th>Açıklama</th>
+                <th>Tarih</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.KargoTakipAciklama</td>
+                    <td>@item.KargoTakipTarih.ToString("dd/MM/yyyy")</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+

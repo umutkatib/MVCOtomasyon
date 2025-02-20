@@ -71,6 +71,7 @@ namespace MvcOnlineTicariOtomasyon
 			app.UseAuthorization();
 
 			app.UseSession();
+			app.UseStaticFiles();
 
 			app.UseEndpoints(endpoints =>
 			{
