@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -35,18 +36,22 @@ namespace MvcOnlineTicariOtomasyon
 					{
 						options.LoginPath = new PathString("/Login/Index");
 						options.AccessDeniedPath = new PathString("/Login/Index");
-						options.ExpireTimeSpan = TimeSpan.FromMinutes(5);
+						options.ExpireTimeSpan = TimeSpan.FromMinutes(15);
 					});
 			services.AddAuthorization();
 
 			services.AddSession(options =>
 			{
-				options.IdleTimeout = TimeSpan.FromMinutes(5); // Oturum süresi
+				options.IdleTimeout = TimeSpan.FromMinutes(15); // Oturum süresi
 				options.Cookie.HttpOnly = true;
 				options.Cookie.IsEssential = true;
 			});
 
-			services.AddControllersWithViews();
+			services.AddControllersWithViews(options =>
+			{
+				options.Filters.Add(new AuthorizeFilter());
+			});
+			services.AddAuthentication();
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -73,7 +78,9 @@ namespace MvcOnlineTicariOtomasyon
 			app.UseSession();
 			app.UseStaticFiles();
 
-			app.UseEndpoints(endpoints =>
+            app.UseStatusCodePagesWithRedirects("/Error/Page{0}");
+
+            app.UseEndpoints(endpoints =>
 			{
 				endpoints.MapControllerRoute(
 					name: "default",

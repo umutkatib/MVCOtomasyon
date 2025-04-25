@@ -1,11 +1,13 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using MvcOnlineTicariOtomasyon.Models.Sinfilar;
 using MvcOnlineTicariOtomasyon.Models.Sinfilar.Context;
+using System.Linq;
 using X.PagedList;
 
 namespace MvcOnlineTicariOtomasyon.Controllers
 {
-	public class KategoriController : Controller
+    public class KategoriController : Controller
 	{
 		private Context _context;
 
@@ -56,6 +58,29 @@ namespace MvcOnlineTicariOtomasyon.Controllers
             kategori.KategoriAd = k.KategoriAd;
             _context.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+        public IActionResult KCascading()
+        {
+            Class3 cascading = new Class3();
+            cascading.Kategoriler = new SelectList(_context.Kategoris, "KategoriID", "KategoriAd");
+            cascading.Urunler = new SelectList(_context.Uruns.Where(x => x.UrunDurum == true), "UrunID", "UrunAd");
+            return View(cascading);
+        }
+
+        public JsonResult UrunGetir(int p)
+        {
+            var urunler = (from x in _context.Uruns
+                           join y in _context.Kategoris
+                           on x.Kategori.KategoriID equals y.KategoriID
+                           where x.Kategori.KategoriID == p
+                           select new
+                           {
+                               Text = x.UrunAd,
+                               Value = x.UrunID.ToString()
+                           }).ToList();
+
+            return Json(urunler);
         }
     }
 }

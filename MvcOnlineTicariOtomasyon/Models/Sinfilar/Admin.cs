@@ -11,7 +11,7 @@ namespace MvcOnlineTicariOtomasyon.Models.Sinfilar
 		public string KullaniciAd { get; set; }
 		[Column(TypeName = "Varchar"), StringLength(25)]
 		public string Sifre { get; set; }
-		[Column(TypeName = "Char"), StringLength(15)]
+		[Column(TypeName = "Varchar"), StringLength(1)]
 		public string Yetki { get; set; }
     }
 }

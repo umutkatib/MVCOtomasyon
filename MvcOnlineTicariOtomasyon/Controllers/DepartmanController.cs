@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MvcOnlineTicariOtomasyon.Models.Sinfilar;
 using MvcOnlineTicariOtomasyon.Models.Sinfilar.Context;
@@ -23,6 +24,7 @@ namespace MvcOnlineTicariOtomasyon.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         public IActionResult DepartmanEkle()
         {
             return View();

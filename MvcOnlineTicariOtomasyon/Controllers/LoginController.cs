@@ -1,15 +1,18 @@
 ﻿using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MvcOnlineTicariOtomasyon.Models.Sinfilar;
 using MvcOnlineTicariOtomasyon.Models.Sinfilar.Context;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 
 namespace MvcOnlineTicariOtomasyon.Controllers
 {
+	[AllowAnonymous]
     public class LoginController : Controller
     {
         private Context _context;
@@ -83,10 +86,19 @@ namespace MvcOnlineTicariOtomasyon.Controllers
 
 			if (bilgiler != null)
 			{
-				var claims = new List<Claim>
+                var role = bilgiler.Yetki switch
+                {
+                    "A" => "Admin",
+                    "B" => "Kullanıcı",
+                    "C" => "Cari",
+                    _ => "Unknown"
+                };
+
+                var claims = new List<Claim>
 				{
 					new Claim(ClaimTypes.Name, bilgiler.KullaniciAd),
-					new Claim("AdminID", bilgiler.AdminID.ToString())
+					new Claim("AdminID", bilgiler.AdminID.ToString()),
+					new Claim(ClaimTypes.Role, role)
 				};
 
 				var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);

@@ -1,94 +1,102 @@
-﻿<!DOCTYPE html>
+﻿
+<!DOCTYPE html>
 <html lang="en">
-
 <head>
-
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
-
-  <title>Simple Sidebar - Start Bootstrap Template</title>
-
-  <!-- Bootstrap core CSS -->
-    <link href="~/webpanel/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-  <!-- Custom styles for this template -->
-    <link href="~/webpanel/css/simple-sidebar.css" rel="stylesheet">
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+            integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Core Ticari Otomasyon - Admin</title>
+    <link href="~/Web/dist/css/styles.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" crossorigin="anonymous"></script>
 </head>
-
 <body>
+    <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+        <a class="navbar-brand" href="/Kategori">Ticari Otomasyon</a><button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#">
+            <i class="fas fa-bars"></i>
+        </button><!-- Navbar Search-->
 
-  <div class="d-flex" id="wrapper">
-
-    <!-- Sidebar -->
-    <div class="bg-light border-right" id="sidebar-wrapper">
-      <div class="sidebar-heading">Cari Paneli </div>
-      <div class="list-group list-group-flush">
-        <a href="/CariPanel" class="list-group-item list-group-item-action bg-light">Profilim</a>
-        <a href="/CariPanel/Siparislerim" class="list-group-item list-group-item-action bg-light">Siparişlerim</a>
-        <a href="/CariPanel/KargoTakip" class="list-group-item list-group-item-action bg-light">Kargo Takibi</a>
-        <a href="/CariPanel/Mesajlar" class="list-group-item list-group-item-action bg-light">Mesajlar</a>
-        <a href="/CariPanel/CikisYap" class="list-group-item list-group-item-action bg-light">Çıkış Yap</a>
-      </div>
-    </div>
-    <!-- /#sidebar-wrapper -->
-
-    <!-- Page Content -->
-    <div id="page-content-wrapper">
-
-      <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
-        <button class="btn btn-primary" id="menu-toggle">...</button>
-
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
-            <li class="nav-item active">
-              <a class="nav-link" href="/CariPanel">Profilim </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/CariPanel/KargoTakip">Kargom Nerede?</a>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Menü
-              </a>
-              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="/CariPanel/Siparislerim">Siparişlerim</a>
-                <a class="dropdown-item" href="/CariPanel/Yardım">Yardım</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="/CariPanel/CikisYap">Çıkış Yap</a>
-              </div>
-            </li>
-          </ul>
+    </nav>
+    <div id="layoutSidenav">
+        <div id="layoutSidenav_nav">
+            <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+                <div class="sb-sidenav-menu">
+                    <div class="nav">
+                        <div class="sb-sidenav-menu-heading">CARI PANEL MENUSU</div>
+                        <a class="nav-link" href="/CariPanel/">
+                            <div class="sb-nav-link-icon"><i class="fas fa-person-booth"></i></div>
+                            Profilim
+                        </a>
+                        <a class="nav-link" href="/CariPanel/Siparislerim">
+                            <div class="sb-nav-link-icon"><i class="fas fa-box"></i></div>
+                            Siparişlerim
+                        </a>
+                        <a class="nav-link" href="/CariPanel/KargoTakip">
+                            <div class="sb-nav-link-icon"><i class="fas fa-truck"></i></div>
+                            Kargo Takibi
+                        </a>
+                        <a class="nav-link" href="/CariPanel/GelenMesaj">
+                            <div class="sb-nav-link-icon"><i class="fas fa-mail-bulk"></i></div>
+                            Mesajlar
+                        </a>
+                        <a class="nav-link" href="/CariPanel/CikisYap">
+                            <div class="sb-nav-link-icon"><i class="fas fa-sign-out-alt"></i></div>
+                            Çıkış Yap
+                        </a>
+                    </div>
+                </div>
+            </nav>
         </div>
-      </nav>
-
-      <div class="container-fluid">
-        @RenderBody() 
-      </div>
+        <div id="layoutSidenav_content">
+            <main>
+                <div class="container-fluid">
+                    @RenderBody()
+                </div>
+            </main>
+            <footer class="py-4 bg-light mt-auto">
+                <div class="container-fluid">
+                    <div class="d-flex align-items-center justify-content-between small">
+                        <div class="text-muted">Made by <i><b>UmutKatib</b></i> with <i class="fas fa-heart"></i></div>
+                        <div>
+                            <div class="text-muted">Copyright &copy; @DateTime.Now.Year </div>
+                            <a href="#">Privacy Policy & Terms Conditions</a>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
     </div>
-    <!-- /#page-content-wrapper -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    <script src="~/Web/dist/js/scripts.js"></script>
 
-  </div>
-  <!-- /#wrapper -->
+    <!-- CSS -->
+    <link href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet" />
 
-  <!-- Bootstrap core JavaScript -->
-    <script src="~/webpanel/vendor/jquery/jquery.min.js"></script>
-    <script src="~/webpanel/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- JS -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap4.min.js"></script>
 
-  <!-- Menu Toggle Script -->
-  <script>
-    $("#menu-toggle").click(function(e) {
-      e.preventDefault();
-      $("#wrapper").toggleClass("toggled");
-    });
-  </script>
+
+    <script>
+
+        $('#tbl1').dataTable({
+            language: {
+                url: '//cdn.datatables.net/plug-ins/2.2.1/i18n/tr.json',
+            },
+            lengthMenu: [[5, 10, 25, 50, -1], [5, 10, 25, 50, "Tümü"]] // Kullanıcının seçim yapabileceği seçenekler
+
+        });
+
+    </script>
 
 </body>
-
 </html>

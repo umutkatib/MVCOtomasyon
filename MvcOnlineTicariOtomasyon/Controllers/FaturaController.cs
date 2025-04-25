@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using MvcOnlineTicariOtomasyon.Models.Sinfilar;
 using MvcOnlineTicariOtomasyon.Models.Sinfilar.Context;
+using System;
 using System.Linq;
 
 namespace MvcOnlineTicariOtomasyon.Controllers
@@ -99,5 +100,42 @@ namespace MvcOnlineTicariOtomasyon.Controllers
         //    _context.SaveChanges();
         //    return RedirectToAction("Index");
         //}
+
+        public IActionResult Dinamik()
+        {
+            DinamikF dinamikF = new DinamikF();
+            dinamikF.Faturalar = _context.Faturas.ToList();
+            dinamikF.FaturaKalem = _context.FaturaKalems.ToList();
+            return View(dinamikF);
+        }
+
+        public IActionResult FaturaKaydet(string FaturaSeriNo, string FaturaSiraNo, 
+            DateTime FaturaTarih, string FaturaVergiDairesi, string FaturaSaat,
+            string FaturaTeslimEden, string FaturaTeslimAlan, string FaturaToplamTutar, FaturaKalem[] FKalemler)
+        {
+            Fatura f = new Fatura();
+            f.FaturaSeriNo = FaturaSeriNo;
+            f.FaturaSiraNo = FaturaSiraNo;
+            f.FaturaTarih = FaturaTarih;
+            f.FaturaVergiDairesi = FaturaVergiDairesi;
+            f.FaturaSaat = FaturaSaat;
+            f.FaturaTeslimEden = FaturaTeslimEden;
+            f.FaturaTeslimAlan = FaturaTeslimAlan;
+            f.FaturaToplamTutar = decimal.Parse(FaturaToplamTutar);
+            _context.Faturas.Add(f);
+            _context.SaveChanges();
+
+            foreach (var kalem in FKalemler)
+            {
+                kalem.FaturaID = f.FaturaID;
+                kalem.FaturaKalemDurum = true;
+                _context.FaturaKalems.Add(kalem);
+            }
+
+            _context.SaveChanges();
+
+
+            return Json("İşlem Başarılı");
+        }
     }
 }

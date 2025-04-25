@@ -1,0 +1,49 @@
+﻿@model List<MvcOnlineTicariOtomasyon.Models.Sinfilar.KargoDetay>
+
+@{
+    ViewData["Title"] = "KargoTakip";
+    Layout = "~/Views/Shared/_CariLayout.cshtml";
+    bool aramaYapildi = ViewBag.AramaYapildi ?? false; // Arama yapılıp yapılmadığını kontrol ediyoruz.
+}
+
+@using (Html.BeginForm("KargoTakip", "CariPanel", FormMethod.Get))
+{
+    <p class="mt-3">
+        Kargo Takip Numarası: @Html.TextBox("p")
+        <input type="submit" value="Kargo Ara" />
+    </p>
+}
+
+@if (aramaYapildi)
+{
+    if (Model != null && Model.Any())
+    {
+        <table id="tbl1" class="table table-bordered text-center align-middle">
+            <thead>
+                <tr>
+                    <th>Kod</th>
+                    <th>Personel</th>
+                    <th>Alıcı</th>
+                    <th>Tarih</th>
+                    <th>Detay</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.KargoDetayTakipKodu</td>
+                        <td>@item.KargoDetayPersonel</td>
+                        <td>@item.KargoDetayAlici</td>
+                        <td>@item.KargoDetayTarih.ToString("dd/MM/yyyy")</td>
+                        <td><a href="/CariPanel/CariKargoTakipDetay/@item.KargoDetayTakipKodu" class="btn btn-outline-success"><i class="fas fa-info-circle"></i></a></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p class="alert alert-warning text-center">Aranan veri bulunamadı.</p>
+    }
+}

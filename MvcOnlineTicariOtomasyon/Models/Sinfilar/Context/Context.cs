@@ -20,5 +20,6 @@ namespace MvcOnlineTicariOtomasyon.Models.Sinfilar.Context
         public DbSet<Yapilacak> Yapilacaks { get; set; }
         public DbSet<KargoDetay> KargoDetays { get; set; }
         public DbSet<KargoTakip> KargoTakips { get; set; }
+        public DbSet<Mesaj> Mesajs { get; set; }
     }
 }

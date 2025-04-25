@@ -1,0 +1,55 @@
+﻿@model MvcOnlineTicariOtomasyon.Models.Sinfilar.Class3
+
+@{
+    ViewData["Title"] = "KCascading";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<script>
+
+    $(function () {
+
+        $('#DrpKategori').change(function () {
+
+            var id = $('#DrpKategori').val();
+
+            $.ajax({
+
+                url: '/Kategori/UrunGetir',
+
+                data: { p: id },
+
+                type: "POST",
+
+                dataType: "Json",
+
+                success: function (data) {
+
+                    console.log(data);
+
+                    $('#DrpUrunler').empty();
+
+                    for (var i = 0; i < data.length; i++) {
+
+                        $('#DrpUrunler').append("<option value='" + data[i].value + "'>" + data[i].text + "</Option>");
+
+                    }
+
+                }
+
+            });
+
+        });
+
+    });
+
+</script>
+
+<h2>Kategori - Ürün</h2>
+<br />
+<hr />
+<br />
+@Html.Label("Kategoriler")
+@Html.DropDownList("DrpKategori", Model.Kategoriler, "--Kategori Seçiniz", new {@class="form-control"})
+@Html.Label("Ürünler")
+@Html.DropDownList("DrpUrunler", Model.Urunler, "--Ürün Seçiniz", new { @class = "form-control" })
